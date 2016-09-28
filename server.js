@@ -5,7 +5,7 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 var articles = {
-    articleOne: {
+    `article-one: {
         title: 'Rakesh | Article One',
         heading: 'Article One',
         date: '18 Sep, 2016',
@@ -20,7 +20,7 @@ var articles = {
                 This is the content for my first Article. This is the content for my first Article. This is the content for my first Article. This is the content for my first Article. This is the content for my first Article. This is the content for my first Article.
             </P>`
     },
-    articletwo:{
+    `article-two:{
      title: 'Rakesh | Article Two',
         heading: 'Article Two',
         date: '22 Sep, 2016',
@@ -35,26 +35,27 @@ var articles = {
                  This is the content for my Second Article. This is the content for my Second Article. This is the content for my Second Article. This is the content for my Second Article. This is the content for my Second Article. This is the content for my Second Article.
             </P>`
     },
-articleThree:{
+    `article-three:{
     title: 'Rakesh | Article Third',
-        heading: 'Article Three',
-        date: '27 Sep, 2016',
-        content:`
-             <p>
-                    This is the content for my Third Article. This is the content for my Third Article. This is the content for my Third Article. This is the content for my Third Article. This is the content for my Third Article. This is the content for my Third Article. 
-            </p>
-            <p>
-                This is the content for my Third Article. This is the content for my Third Article. This is the content for my Third Article. This is the content for my Third Article. This is the content for my Third Article. This is the content for my Third Article. 
-            </p>
-            <p>
-                This is the content for my Third Article. This is the content for my Third Article. This is the content for my Third Article. This is the content for my Third Article. This is the content for my Third Article. This is the content for my Third Article. 
-            </P>`
+    heading: 'Article Three',
+    date: '27 Sep, 2016',
+    content:`
+         <p>
+            This is the content for my Third Article. This is the content for my Third Article. This is the content for my Third Article. This is the content for my Third Article. This is the content for my Third Article. This is the content for my Third Article. 
+        </p>
+        <p>
+            This is the content for my Third Article. This is the content for my Third Article. This is the content for my Third Article. This is the content for my Third Article. This is the content for my Third Article. This is the content for my Third Article. 
+        </p>
+        <p>
+            This is the content for my Third Article. This is the content for my Third Article. This is the content for my Third Article. This is the content for my Third Article. This is the content for my Third Article. This is the content for my Third Article. 
+        </P>`
     },
-function createTemplate (data){
+};
+function createTemplate (data) {
     var title = data.title;
     var heading = data.heading;
     var date = data.date;
-    var content = data.content
+    var content = data.content;
     
 var htmlTemplate=`
 <html>
@@ -89,18 +90,16 @@ var htmlTemplate=`
 `;
 return htmlTemplate;
 }
+
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
-app.get('/article-one', function(req,res){
-   res.send(createTemplate(articleOne));
+app.get('/articleName', function(req,res){
+    var articleName = req.params.articleName;
+   res.send(createTemplate(articles[articleName]));
 });
-app.get('/article-two', function(req,res){
-    res.send(createTemplate(articleTwo));
-});
-app.get('/article-three', function(req,res){
-     res.send(createTemplate(articleThreee));
-});
+
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
 });
