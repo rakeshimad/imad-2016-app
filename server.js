@@ -4,21 +4,52 @@ var path = require('path');
 
 var app = express();
 app.use(morgan('combined'));
-var articleOne = {
-    title: 'Rakesh | Article One',
-    heading: 'Article One',
-    date: '18 Sep, 2016',
-    content:`
-         <p>
+var articles = {
+    articleOne: {
+        title: 'Rakesh | Article One',
+        heading: 'Article One',
+        date: '18 Sep, 2016',
+        content:`
+             <p>
+                    This is the content for my first Article. This is the content for my first Article. This is the content for my first Article. This is the content for my first Article. This is the content for my first Article. This is the content for my first Article.
+            </p>
+            <p>
                 This is the content for my first Article. This is the content for my first Article. This is the content for my first Article. This is the content for my first Article. This is the content for my first Article. This is the content for my first Article.
-        </p>
-        <p>
-            This is the content for my first Article. This is the content for my first Article. This is the content for my first Article. This is the content for my first Article. This is the content for my first Article. This is the content for my first Article.
-        </p>
-        <p>
-            This is the content for my first Article. This is the content for my first Article. This is the content for my first Article. This is the content for my first Article. This is the content for my first Article. This is the content for my first Article.
-        </P>`
-};
+            </p>
+            <p>
+                This is the content for my first Article. This is the content for my first Article. This is the content for my first Article. This is the content for my first Article. This is the content for my first Article. This is the content for my first Article.
+            </P>`
+    },
+    articletwo:{
+     title: 'Rakesh | Article Two',
+        heading: 'Article Two',
+        date: '22 Sep, 2016',
+        content:`
+             <p>
+                    This is the content for my Second Article. This is the content for my Second Article. This is the content for my Second Article. This is the content for my Second Article. This is the content for my Second Article. This is the content for my Second Article.
+            </p>
+            <p>
+                This is the content for my Second Article. This is the content for my Second Article. This is the content for my Second Article. This is the content for my Second Article. This is the content for my Second Article. This is the content for my Second Article.
+            </p>
+            <p>
+                 This is the content for my Second Article. This is the content for my Second Article. This is the content for my Second Article. This is the content for my Second Article. This is the content for my Second Article. This is the content for my Second Article.
+            </P>`
+    },
+articleThree:{
+    title: 'Rakesh | Article Third',
+        heading: 'Article Three',
+        date: '27 Sep, 2016',
+        content:`
+             <p>
+                    This is the content for my Third Article. This is the content for my Third Article. This is the content for my Third Article. This is the content for my Third Article. This is the content for my Third Article. This is the content for my Third Article. 
+            </p>
+            <p>
+                This is the content for my Third Article. This is the content for my Third Article. This is the content for my Third Article. This is the content for my Third Article. This is the content for my Third Article. This is the content for my Third Article. 
+            </p>
+            <p>
+                This is the content for my Third Article. This is the content for my Third Article. This is the content for my Third Article. This is the content for my Third Article. This is the content for my Third Article. This is the content for my Third Article. 
+            </P>`
+    },
 function createTemplate (data){
     var title = data.title;
     var heading = data.heading;
